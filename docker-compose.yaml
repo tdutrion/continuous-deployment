@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  app:
+    restart: 'on-failure'
+    build:
+      context: resources/env/local
+    volumes:
+      - ./:/var/www/html:cached
+    env_file:
+      - .env
+    depends_on:
+      - database
+      - storage
+    ports:
+      - 8000:80
+  database:
+    restart: 'on-failure'
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=continous-deployment
+      - MYSQL_USER=demo
+      - MYSQL_PASSWORD=demo
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+  storage:
+    restart: 'on-failure'
+    image: minio/minio:latest
+    ports:
+      - 9000:9000
+    volumes:
+      - ./var/s3:/data
+    command: 'server /data'
+

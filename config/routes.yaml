@@ -1,0 +1,3 @@
+home:
+    path: /
+    controller: App\Action\Home::handle
