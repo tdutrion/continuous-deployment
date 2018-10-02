@@ -44,7 +44,7 @@ touch remote/hooks/post-receive && chmod +x remote/hooks/post-receive
 ```
 
 ```bash
-#!/bin/sh
+#!/bin/bash
 
 while read oldrev newrev ref
 do
