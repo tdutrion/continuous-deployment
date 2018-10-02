@@ -113,6 +113,18 @@ we will use a symlink. The same concept could be applied using DNS resolution or
 ln -s ./blue/public deployment/current
 ```
 
+After you need to go in project folder
+```bash
+cd ./project
+```
+
+Now you can change the remote of project
+```bash
+git remote rm origin
+git remote add origin ../remote
+git push origin master
+```
+
 Last thing we need to do here is to set a webserver with a document root pointing on the public directory of the symlink.
 
 ```bash
@@ -135,6 +147,24 @@ WORKDIR /var/www/html
 ```bash
 docker build -t continuous-deployment/server-demo env
 docker run --rm -v $(pwd):/var/www/html:cached -p 80:80 continuous-deployment/server-demo
+```
+
+You need to be careful that port 80 is not used already, or change it in the command.
+
+You can go on http://127.0.0.1 and you should see one page with Hello World
+
+Now you can try to edit content of message
+```bash
+vim project/src/Action/Home.php
+```
+
+Now you can do the same things what you did before, and you will see the page change without downtime (you may need to clear the webbrowser http cache)
+
+```bash
+git status
+git add .
+git commit -m "second commit"
+git push origin master
 ```
 
 ## Build Docker
