@@ -27,7 +27,7 @@ webserver configuration.
 
 Assuming `./` as your current directory, empty for now.
 
-Clone this repository in the `./project` folder.
+Clone this repository in the `./project` folder (`git clone git@github.com:tdutrion/continuous-deployment.git project`).
 
 Then create an empty repository using `mkdir remote && cd remote && git init --bare`.
 
