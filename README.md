@@ -110,7 +110,7 @@ Then make sure we know which one of green or blue is the current deployment. Bec
 we will use a symlink. The same concept could be applied using DNS resolution or a reverse proxy configuration.
 
 ```bash
-ln -s deployment/blue/public deployment/current
+ln -s ./blue/public deployment/current
 ```
 
 Last thing we need to do here is to set a webserver with a document root pointing on the public directory of the symlink.
