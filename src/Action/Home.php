@@ -10,8 +10,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
-final class Home implements RequestHandlerInterface
-{
+final class Home implements RequestHandlerInterface {
     private $templateRenderer;
 
     public function __construct(TemplateRendererInterface $templateRenderer)
