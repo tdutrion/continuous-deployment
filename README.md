@@ -146,7 +146,13 @@ WORKDIR /var/www/html
 
 ```bash
 docker build -t continuous-deployment/server-demo env
+
+UNIX
 docker run --rm -v $(pwd):/var/www/html:cached -p 80:80 continuous-deployment/server-demo
+
+WINDOWS
+docker run --rm -v /$(pwd):/var/www/html:cached -p 80:80 continuous-deployment/server-demo
+
 ```
 
 You need to be careful that port 80 is not used already, or change it in the command.
